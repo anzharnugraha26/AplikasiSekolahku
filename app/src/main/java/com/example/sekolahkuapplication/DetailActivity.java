@@ -12,6 +12,7 @@ import com.example.sekolahkuapplication.datasource.DatabaseHelper;
 import com.example.sekolahkuapplication.datasource.SiswaDataSource;
 import com.example.sekolahkuapplication.model.Siswa;
 
+
 public class DetailActivity extends AppCompatActivity {
 
     TextView fullname, noHp , gender , jenjang , hobi , alamat ;

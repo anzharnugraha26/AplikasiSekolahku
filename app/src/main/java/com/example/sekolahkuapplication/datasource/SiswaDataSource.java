@@ -101,6 +101,14 @@ public class SiswaDataSource {
             database.close();
     }
 
+    public void remove (Siswa siswa){
+            SQLiteDatabase database = databaseHelper.getWritableDatabase();
+            database.delete("siswa", "id=?", new
+                    String[]{Long.toString(siswa.getId())});
+            database.close();
+    }
+
+
 
 
 }

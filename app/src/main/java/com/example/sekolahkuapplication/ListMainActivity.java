@@ -24,6 +24,7 @@ public class ListMainActivity extends AppCompatActivity {
 
     private ListView siswaLv ;
     private SiswaItemAdapter adapter;
+    private  SiswaDataSource dataSource;
 
     private void showToast(String message){
         Toast.makeText(this, message , Toast.LENGTH_LONG).show();
@@ -62,6 +63,14 @@ public class ListMainActivity extends AppCompatActivity {
                 showToast("failed" + e.getMessage());
         }
     }
+
+        private void delete(Siswa siswa){
+                DatabaseHelper databaseHelper = new DatabaseHelper(this);
+                SiswaDataSource dataSource = new SiswaDataSource(databaseHelper);
+                dataSource.remove(siswa);
+                adapter.notifyDataSetChanged();
+        }
+
 
     private void startFormActivity(){
         Intent intent = new Intent(this, FormActivity.class);
@@ -102,6 +111,10 @@ public class ListMainActivity extends AppCompatActivity {
                     startFormEdit(selectedPosition);
                     break;
                 case R.id.action_delete:
+                    delete(adapter.getItem(selectedPosition));
+                    Intent intent = new Intent(ListMainActivity.this, ListMainActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(this, "Delete Sukses", Toast.LENGTH_SHORT).show();
                     break;
             }
 
