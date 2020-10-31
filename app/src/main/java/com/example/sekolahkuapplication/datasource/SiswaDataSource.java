@@ -70,6 +70,8 @@ public class SiswaDataSource {
         database.close();
         return foundSiswaList;
     }
+//
+//
 
 
     public Siswa findById(Long id){
@@ -109,6 +111,22 @@ public class SiswaDataSource {
     }
 
 
+    public List<Siswa> search (String keywoord){
+        SQLiteDatabase database = databaseHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM siswa WHERE " +
+                "namaDepan LIKE ? OR namaBelakang LIKE ? " , new String[]{
+                        "%" + keywoord + "%" , "%" + keywoord + "%"
+                });
+        List<Siswa> siswas = new ArrayList<>();
+        while (!cursor.isAfterLast()){
+            Siswa siswa = convertToSiswa(cursor);
+            siswas.add(siswa);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        database.close();
+        return siswas;
+    }
 
 
 }

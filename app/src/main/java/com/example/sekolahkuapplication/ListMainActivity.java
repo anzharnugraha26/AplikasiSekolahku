@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.sekolahkuapplication.adapter.SiswaItemAdapter;
@@ -24,7 +25,7 @@ public class ListMainActivity extends AppCompatActivity {
 
     private ListView siswaLv ;
     private SiswaItemAdapter adapter;
-    private  SiswaDataSource dataSource;
+    private SearchView searchSiswa ;
 
     private void showToast(String message){
         Toast.makeText(this, message , Toast.LENGTH_LONG).show();
@@ -72,20 +73,38 @@ public class ListMainActivity extends AppCompatActivity {
         }
 
 
+
+
     private void startFormActivity(){
         Intent intent = new Intent(this, FormActivity.class);
             startActivity(intent);
     }
 
-    @Override
+     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int selectedMenuId = item.getItemId();
         if (selectedMenuId == R.id.AddSiswaMenu){
             startFormActivity();
         }
+        if (selectedMenuId == R.id.searchView){
+            androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) item.getActionView();
+            searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+
+                    return true;
+                }
+            });
+        }
 
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -98,7 +117,10 @@ public class ListMainActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         getMenuInflater().inflate(R.menu.menu_context, menu);
         super.onCreateContextMenu(menu, v, menuInfo);
+
     }
+
+
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
@@ -126,7 +148,13 @@ public class ListMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_main);
         siswaLv = findViewById(R.id.siswaLv);
+       // SearchView searchView = findViewById(R.id.search_view);
+
         registerForContextMenu(siswaLv);
+
+
+
+
     }
 
     @Override
