@@ -8,8 +8,16 @@
     android:layout_margin="10dp"
     tools:context=".ListMainActivity">
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/siswa_sv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:queryHint="Cari..."
+        app:iconifiedByDefault="false"/>
+    
     <ListView
         android:id="@+id/siswaLv"
+        android:paddingTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_siswa"

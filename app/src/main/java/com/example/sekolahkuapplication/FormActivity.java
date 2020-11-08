@@ -143,11 +143,58 @@ public class FormActivity extends AppCompatActivity  implements DatePickerDialog
             }
         }
 
+        private  boolean validateInputs(){
+        boolean valid = true;
+        String etnamaDepan = namaDepan.getText().toString().trim();
+        String etnamaBelakang = namaBelakang.getText().toString().trim();
+        String etNoHandphone = noHp.getText().toString().trim();
+        String etEmail = email.getText().toString().trim();
+        String etTglLahir = tglLahir.getText().toString().trim();
+        String etAlamat = alamat.getText().toString().trim();
+
+        if (etnamaDepan.isEmpty()){
+            valid = false;
+            namaDepan.setError("Nama Depan Required");
+        }
+        if (etnamaBelakang.isEmpty()){
+            valid = false;
+            namaBelakang.setError("nama belakang");
+        }
+        if (etNoHandphone.isEmpty()){
+            valid = false;
+            noHp.setError("empty");
+        }
+        if (etEmail.isEmpty()){
+            valid = false ;
+            email.setError("empty");
+        }
+
+        if (etTglLahir.isEmpty()){
+            valid = false;
+            tglLahir.setError("empty");
+        }
+
+        if (etAlamat.isEmpty()){
+            valid = false;
+            alamat.setError("empty");
+        }
+
+
+         return valid;
+
+        }
+
         private void save(){
+            boolean isInpuValid = validateInputs();
+
+            if (isInpuValid){
             if (receivedSiswa != null){
                 updateSiswa();
             } else{
                 addNewSiswa();
+            }
+        } else {
+            showToast("sory");
             }
         }
 
