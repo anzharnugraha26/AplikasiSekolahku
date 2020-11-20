@@ -15,7 +15,7 @@
             android:layout_gravity="center"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:tint="#FF5722"
+            android:backgroundTint="#FF5722"
             android:src="@drawable/ic_person_outline_black_24dp"
             />
         <LinearLayout
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:text="SD"
                 android:id="@+id/listEducation"
-                android:layout_gravity="end"/>
+                android:layout_gravity="right"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

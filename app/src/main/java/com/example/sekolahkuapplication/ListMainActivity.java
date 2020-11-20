@@ -67,7 +67,7 @@ public class ListMainActivity extends AppCompatActivity {
         }
     }
 
-    private void searchSiswa (String keyword){
+    private void searchSiswa(String keyword) {
         try {
             DatabaseHelper databaseHelper = new DatabaseHelper(this);
             SiswaDataSource dataSource = new SiswaDataSource(databaseHelper);
@@ -78,7 +78,7 @@ public class ListMainActivity extends AppCompatActivity {
             }
             adapter.addAll(foundSiswaList);
             adapter.notifyDataSetChanged();
-        } catch (Exception e){
+        } catch (Exception e) {
             showToast("unable to search siswa caused by :" + e.getMessage());
         }
     }
@@ -114,7 +114,7 @@ public class ListMainActivity extends AppCompatActivity {
 
                 @Override
                 public boolean onQueryTextChange(String newText) {
-                        showToast(newText);
+                    showToast(newText);
                     return true;
                 }
             });
