@@ -20,12 +20,12 @@ public class SiswaItemAdapter extends ArrayAdapter<Siswa> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int position, View convertView, ViewGroup parent) {
         View listItemView = convertView;
 
-        if (listItemView == null){
+        if (listItemView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            listItemView = inflater.inflate(R.layout.item_siswa , parent , false);
+            listItemView = inflater.inflate(R.layout.item_siswa, parent, false);
         }
 
         TextView etNamaDepan = listItemView.findViewById(R.id.etNamaDepan);
@@ -34,12 +34,12 @@ public class SiswaItemAdapter extends ArrayAdapter<Siswa> {
         TextView etNohp = listItemView.findViewById(R.id.etNoHandphone);
         TextView etTgllahir = listItemView.findViewById(R.id.etTgllahir);
 
-            Siswa siswa = getItem(position);
-            etNamaDepan.setText(siswa.getNamaDepan() +" "+ siswa.getNamaBelakang());
-            genderRb.setText(siswa.getGender());
-            etNohp.setText(siswa.getPhoneNumber());
-            educationList.setText(siswa.getEducation());
-            etTgllahir.setText(siswa.getTglLahir());
+        Siswa siswa = getItem(position);
+        etNamaDepan.setText(siswa.getNamaDepan() + " " + siswa.getNamaBelakang());
+        genderRb.setText(siswa.getGender());
+        etNohp.setText(siswa.getPhoneNumber());
+        educationList.setText(siswa.getEducation());
+        etTgllahir.setText(siswa.getTglLahir());
 
         return listItemView;
     }
